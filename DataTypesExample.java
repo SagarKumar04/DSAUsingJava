@@ -1,3 +1,5 @@
+package InfinityJune21;
+
 import java.util.Scanner; //1
 
 public class DataTypesExample {

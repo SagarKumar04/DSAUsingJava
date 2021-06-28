@@ -1,3 +1,5 @@
+package InfinityJune21;
+
 public class ConditionalsExample {
     public static void main(String[] args) {
         /*
