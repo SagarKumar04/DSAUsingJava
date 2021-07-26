@@ -29,22 +29,66 @@ public class SinglyLinkedList {
     }
 
     public void push(int data) {
+        /*
+        Allocate the node
+        Put the data in the data
+        Set next as 'null'
+        */
         Node n = new Node(data);
 
+        //If the current node is note the first node of the linked list
         if(head != null) {
             n.next = head;
         }
+        //Make current node as the first node of the linked list
         head = n;
 
+        //Increase the size value by 1
         size = size + 1;
     }
 
     public void insertAtPosition(int position, int data) {
-        if(position < 0 || position > (size + 1)) {
-            System.out.println("You may insert between (and including) positions 0 and " + (size + 1));
+        if(position <= 0 || position > (size + 1)) {
+            System.out.println("You may insert between (and including) positions 1 and " + (size + 1));
         }
         else {
-            System.out.println("Fine!");
+            //If position is 1, it is same as 'push' function
+            if(position == 1) {
+                push(data);
+            }
+            //If position is size + 1, it is same as 'append' function
+            else if(position == (size + 1)) {
+                append(data);
+            }
+            else {
+                /*
+                Allocate the node
+                Put the data in the data
+                Set next as 'null'
+                */
+                Node n = new Node(data);
+
+                //To store the current position of the node while traversing
+                int currentPosition = 1;
+
+                //To posint to the previous node of the node where the new node is to be inserted
+                Node previousNode = head;
+
+                //To traverse through the linked list to reach the required position
+                while(currentPosition != (position - 1)) {
+                    previousNode.next = previousNode;
+                    currentPosition = currentPosition + 1;
+                }
+
+                //Make new node point to the next node
+                n.next = previousNode.next;
+
+                //Make previous node point to the new node
+                previousNode.next = n;
+
+                //Increase the size value by 1
+                size = size + 1;
+            }
         }
     }
 
@@ -76,6 +120,7 @@ public class SinglyLinkedList {
             last.next = n;
         }
 
+        //Increase the size value by 1
         size = size + 1;
     }
 
@@ -83,25 +128,46 @@ public class SinglyLinkedList {
         SinglyLinkedList sll = new SinglyLinkedList();
 
         sll.traverse();
+        System.out.println("Size: " + sll.size);
 
         sll.push(0);
         sll.traverse();
+        System.out.println("Size: " + sll.size);
 
         sll.append(6);
         sll.traverse();
+        System.out.println("Size: " + sll.size);
         sll.append(9);
         sll.traverse();
+        System.out.println("Size: " + sll.size);
         sll.append(12);
         sll.traverse();
+        System.out.println("Size: " + sll.size);
         sll.append(15);
         sll.traverse();
+        System.out.println("Size: " + sll.size);
 
         sll.push(3);
         sll.traverse();
-
         System.out.println("Size: " + sll.size);
+
         sll.insertAtPosition(-1, 18);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
         sll.insertAtPosition(7, 21);
-        sll.insertAtPosition(8, 21);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.insertAtPosition(9, 24);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.insertAtPosition(8, 24);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.insertAtPosition(9, 27);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.insertAtPosition(1, 30);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
     }
 }
