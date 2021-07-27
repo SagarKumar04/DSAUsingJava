@@ -71,7 +71,7 @@ public class SinglyLinkedList {
                 //To store the current position of the node while traversing
                 int currentPosition = 1;
 
-                //To posint to the previous node of the node where the new node is to be inserted
+                //To point to the previous node of the node where the new node is to be inserted
                 Node previousNode = head;
 
                 //To traverse through the linked list to reach the required position
@@ -124,6 +124,32 @@ public class SinglyLinkedList {
         size = size + 1;
     }
 
+    public void delete(int position) {
+        if(head == null) {
+            System.out.println("Linked List is empty");
+        }
+        else if(position < 1 || position > size) {
+            System.out.println("You can delete between positions 1 and " + size);
+        }
+        else {
+            Node temp = head;
+            if(position == 1) {
+                head = temp.next;
+                temp.next = null;
+            }
+            else {
+                for(int i = 1; i < position - 1; i++) {
+                    temp = temp.next;
+                }
+                Node dN = temp.next;
+                temp.next = dN.next;
+                dN.next = null;
+            }
+
+            size = size - 1;
+        }
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
 
@@ -167,6 +193,19 @@ public class SinglyLinkedList {
         sll.traverse();
         System.out.println("Size: " + sll.size);
         sll.insertAtPosition(1, 30);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+
+        sll.delete(0);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.delete(1);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.delete(9);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.delete(5);
         sll.traverse();
         System.out.println("Size: " + sll.size);
     }
