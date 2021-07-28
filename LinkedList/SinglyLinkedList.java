@@ -76,7 +76,7 @@ public class SinglyLinkedList {
 
                 //To traverse through the linked list to reach the required position
                 while(currentPosition != (position - 1)) {
-                    previousNode.next = previousNode;
+                    previousNode = previousNode.next;
                     currentPosition = currentPosition + 1;
                 }
 
@@ -193,6 +193,9 @@ public class SinglyLinkedList {
         sll.traverse();
         System.out.println("Size: " + sll.size);
         sll.insertAtPosition(1, 30);
+        sll.traverse();
+        System.out.println("Size: " + sll.size);
+        sll.insertAtPosition(5, 33);
         sll.traverse();
         System.out.println("Size: " + sll.size);
 
