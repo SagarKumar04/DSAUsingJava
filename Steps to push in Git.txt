@@ -1,0 +1,9 @@
+git init
+
+git remote add origin <origin-link>
+
+git add .
+
+git commit -m "Solutions for Questions 1 and 2"
+
+git push -u origin master
